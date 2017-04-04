@@ -1,0 +1,20 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="ca.cmetcalfe.xposed.disablebatterywarnings">
+
+    <application
+        android:icon="@mipmap/ic_launcher"
+        android:label="Disable Battery Warnings">
+
+        <meta-data
+            android:name="xposedmodule"
+            android:value="true" />
+        <meta-data
+            android:name="xposeddescription"
+            android:value="Disable the annoying low battery popup and sound" />
+        <meta-data
+            android:name="xposedminversion"
+            android:value="36" />
+
+    </application>
+
+</manifest>
