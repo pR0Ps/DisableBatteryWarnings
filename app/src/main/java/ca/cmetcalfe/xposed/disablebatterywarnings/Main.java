@@ -24,10 +24,19 @@ public class Main implements IXposedHookLoadPackage {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN ||
                 Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
             XposedBridge.log("The DisableBatteryWarnings Xposed module will only work on " +
-                    "Jelly Bean to Marshmallow - exiting now");
+                    "versions Jelly Bean to Marshmallow - exiting now");
             return;
         }
 
+        try {
+            applyHooks(loadPackageParam);
+        }
+        catch (Throwable t){
+            XposedBridge.log("DisableBatteryWarnings failed to apply hooks: " + t.toString());
+        }
+    }
+
+    private void applyHooks(LoadPackageParam loadPackageParam) throws Throwable {
         // Jelly Bean and KitKat
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
             Class<?> powerUI = findClass("com.android.systemui.power.PowerUI",
