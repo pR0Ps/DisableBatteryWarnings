@@ -41,6 +41,7 @@ public class Main implements IXposedHookLoadPackage {
 
         try {
             applyHooks(loadPackageParam);
+            XposedBridge.log("DisableBatteryWarnings hooks applied!");
         }
         catch (Throwable t){
             XposedBridge.log("DisableBatteryWarnings failed to apply hooks: " + t.toString());
